@@ -1,6 +1,7 @@
 <template name="postItem">
-  <div class="post" {{attributes}}>
-    <a href="#" class="upvote btn btn-default {{upvotedClass}}"><i class="entypo entypo-thumbs-up"></i></a>
+  <div class="post" {{attributes}}>    
+    <a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a>
+    <!-- a href="#" class="upvote btn btn-default {{upvotedClass}}"><i class="entypo entypo-thumbs-up"></i></a -->
     <div class="post-content">
       <h3><a href="{{postUrl}}">{{title}}</a>
       <p><span>{{description}}</span></p>{{#if url}}&nbsp;&nbsp;<span>URL: <a href="{{shortUrl}}">{{url}}</a></span>{{/if}}
