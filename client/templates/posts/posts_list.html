@@ -1,0 +1,17 @@
+<template name="postsList">
+  {{#unless currentUser}}
+  <p><span>Please, log in or sign up to view or submit posts or leave comments.</span></p>
+  {{/unless}}
+  <div class="posts">
+    {{#each postsWithRank}}
+      {{> postItem}}
+    {{/each}}
+    {{#if nextPath}}
+      <a class="load-more" href="{{nextPath}}">See more</a>
+    {{else}}
+      {{#unless ready}}
+        {{> spinner}}
+      {{/unless}}
+    {{/if}}
+  </div>
+</template>

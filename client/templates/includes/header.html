@@ -1,0 +1,39 @@
+<template name="header">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{pathFor 'home'}}" style="color:#004b85;font-family: 'Trebuchet MS';font-weight: bold;">HighTech Passport Forum</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li class="{{activeRouteClass  'bestPosts'}}">
+            <a href="{{pathFor 'bestPosts'}}" style="color:#004b85;">Best</a>
+          </li>
+          <li class="{{activeRouteClass 'home' 'newPosts'}}">
+            <a href="{{pathFor 'newPosts'}}" style="color:#004b85;">Newest</a>
+          </li>
+          <li class="{{activeRouteClass  'clickedPosts'}}">
+            <a href="{{pathFor 'clickedPosts'}}" style="color:#004b85;">Most Clicked</a>
+          </li>
+          {{#if currentUser}}
+            <li class="{{activeRouteClass 'postSubmit'}}">
+              <a href="{{pathFor 'postSubmit'}}" style="color:#004b85;">Submit Post</a>
+            </li>
+            <li>
+              {{> notifications}}
+            </li>
+          {{/if}}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {{> loginButtons}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>

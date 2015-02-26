@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "entypo": {}
+    },
+    "packages": {
+      "entypo": {
+        "git": "https://github.com/Dsyko/meteor-entypo.git",
+        "tag": "v0.2.1",
+        "commit": "c69c62ba34f1a76bca2a2be44e18e224a32fe37d"
+      }
+    }
+  }
+}

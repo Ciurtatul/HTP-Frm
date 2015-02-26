@@ -1,0 +1,18 @@
+<template name="postItem">
+  <div class="post" {{attributes}}>
+    <a href="#" class="upvote btn btn-default {{upvotedClass}}"><i class="entypo entypo-thumbs-up"></i></a>
+    <div class="post-content">
+      <h3><a href="{{postUrl}}">{{title}}</a>
+      <p><span>{{description}}</span></p>{{#if url}}&nbsp;&nbsp;<span>URL: <a href="{{shortUrl}}">{{url}}</a></span>{{/if}}
+      </h3>
+      <p>
+        <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount 'comment'}}</a>,
+        {{#if clicks}}{{pluralize clicks "click"}},{{/if}}
+        {{pluralize votes 'vote'}},
+        submitted by {{author}}        
+        {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
+      </p>
+    </div>
+    <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
+  </div>
+</template>
