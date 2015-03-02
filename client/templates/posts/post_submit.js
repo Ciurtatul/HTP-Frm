@@ -1,16 +1,38 @@
+/*//1: natestrauser:x-editable-bootstrap - not rich text
+//1: See also: https://github.com/mcrider/meteor-bootstrap-wysiwyg/blob/master/lib/README.md
+Session.setDefault('textAreaContent', "Some text area content that is editable on click");
+  
+  Template.postSubmit.helpers({
+    'textAreaContent': function () {
+      return Session.get('textAreaContent');
+    }
+  });
+
+  Template.postSubmit.rendered = function(){
+    $('#textArea.editable').editable({
+      placement: "auto top",
+      success: function(response, newValue) {
+        console.log('set new value to ' + newValue);
+        Session.set('textAreaContent', newValue);
+    }});
+  };
+//1:*/
+
+
 Template.postSubmit.events({
   'submit form': function(e) {
     e.preventDefault();
     
     var post = {
-      url: $(e.target).find('[name=url]').val(),
+      userUrl: $(e.target).find('[name=userUrl]').val(),
       title: $(e.target).find('[name=title]').val(),
+      category: $(e.target).find('[name=category]').val(),
       description: $(e.target).find('[name=description]').val(),
     };
     
     var errors = validatePost(post);
     
-    if (errors.description || errors.title)
+    if (errors.description || errors.title || errors.category)
       return Session.set('postSubmitErrors', errors);
     
     Meteor.call('postInsert', post, function(error, result) {

@@ -4,7 +4,11 @@
     <!-- a href="#" class="upvote btn btn-default {{upvotedClass}}"><i class="entypo entypo-thumbs-up"></i></a -->
     <div class="post-content">
       <h3><a href="{{postUrl}}">{{title}}</a>
-      <p><span>{{description}}</span></p>{{#if url}}&nbsp;&nbsp;<span>URL: <a href="{{shortUrl}}">{{url}}</a></span>{{/if}}
+      <p><span>Project/category: {{#if category}}{{category}}{{else}}none{{/if}}</span></p>
+      <p><span>{{description}}</span></p>
+      {{#if userUrl}}
+        <p><span>URL: <a href="{{userUrl}}">{{userUrl}}</a></span></p>
+      {{/if}}
       </h3>
       <p>
         <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount 'comment'}}</a>,

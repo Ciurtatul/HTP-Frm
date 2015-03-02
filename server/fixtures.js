@@ -2,9 +2,9 @@
 
 
   
-  // Improve
+//1: Improve
   var setFixtureUrlShortUrl = function(postId) {
-    var shortURL = Bitly.shortenURL('http://htpquerysystem-198159.usw1.nitrousbox.com/posts/'+postId);
+    var shortURL = Bitly.shortenURL('http://146.148.76.191:3000/posts/'+postId);
     Posts.update(postId, {$set: {url: '/posts/'+postId, shortUrl: shortURL}}, function(error) {
         if (error)
           throw new Meteor.Error(500, error.reason);
@@ -18,7 +18,7 @@
     }
     */
   }
-  // /Improve
+//1: /Improve
   
 
 
@@ -37,10 +37,11 @@ if (Posts.find().count() === 0) {
   
   var intrHTPForumId = Posts.insert({
     title: 'Introducing HTP Forum',
+    category: '',
     description: 'What is this?',
     userId: janeDoe._id,
     author: janeDoe.profile.name,
-    //url: '/posts/'.,
+    //userUrl: '',
     submitted: new Date(now - 7 * 3600 * 1000),
     commentsCount: 2,
     upvoters: [],
@@ -59,11 +60,12 @@ if (Posts.find().count() === 0) {
 
   
   var varianVariseedId = Posts.insert({
-    title: 'Varian - Variseed',
+    title: 'Varian - Variseed',    
+    category: 'Varian',
     description: 'How does one activate Variseed application?',
     userId: janeDoe._id,
     author: janeDoe.profile.name,
-    //url: '/posts/'.,
+    //userUrl: '',
     submitted: new Date(now - 10 * 3600 * 1000),
     commentsCount: 0,
     upvoters: [],
@@ -102,10 +104,11 @@ if (Posts.find().count() === 0) {
   
   var jmpUiStringsId = Posts.insert({
     title: 'JMP - UI Strings',
+    category: 'JMP',
     description: 'How can I insert comments in Transit NXT?',
     userId: johnDoe._id,
     author: johnDoe.profile.name,
-    //url: 'http://themeteorbook.com',
+    //userUrl: '',
     submitted: new Date(now - 12 * 3600 * 1000),
     commentsCount: 0,
     upvoters: [],
@@ -115,18 +118,19 @@ if (Posts.find().count() === 0) {
   setFixtureUrlShortUrl(jmpUiStringsId);
   
   for (var i = 0; i < 10; i++) {
-    var shortURL = Bitly.shortenURL('http://google.com/?q=test-' + i);
-    Posts.insert({      
+    //var shortURL = Bitly.shortenURL('http://google.com/?q=test-' + i);
+    var postId = Posts.insert({      
       title: 'Test post #' + i,
+      category: '',
       description: 'Test question #' + i,
       author: johnDoe.profile.name,
       userId: johnDoe._id,
-      url: 'http://google.com/?q=test-' + i,
-      shortUrl: shortURL,
+      userUrl: 'http://google.com/?q=test-' + i,
       submitted: new Date(now - i * 3600 * 1000 + 1),
       commentsCount: 0,
       upvoters: [],
       votes: 0,
     });
+    setFixtureUrlShortUrl(postId);
   }
 }

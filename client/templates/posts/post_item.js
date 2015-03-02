@@ -1,4 +1,4 @@
-var POST_HEIGHT = 80;
+var POST_HEIGHT = 100;
 var Positions = new Meteor.Collection(null);
 
 Template.postItem.helpers({

@@ -9,21 +9,40 @@
       </div>
     </div>
 
+    
+    <div class="form-group {{errorClass 'category'}}">
+      <label class="control-label" for="category">Project/Category</label>
+      <div class="controls">
+        <select class="form-control" name="category" id="category">
+          <option value="{{category}}" selected>{{category}}</option>
+          <option value="GoDaddy">GoDaddy</option>      
+          <option value="JMP">JMP</option>    
+          <option value="MadMimi">MadMimi</option>
+          <option value="Varian">Varian</option>
+          <option value="Zimbra">Zimbra</option>
+        </select>
+        <span class="help-block">{{errorMessage 'category'}}</span>
+      </div>
+    </div>
+
+
+
     <div class="form-group {{errorClass 'description'}}">
       <label class="control-label" for="description">Body</label>
       <div class="controls">
-          <input name="description" id="description" type="text" value="{{description}}" placeholder="Insert your message or question" class="form-control"/>
+          <!-- input name="description" id="description" type="text" value="{{description}}" placeholder="Insert your message or question" class="form-control"/ -->
+          <textarea name="description" id="description" value="{{description}}" class="form-control" placeholder="Insert your message or question" rows="4"></textarea>
           <span class="help-block">{{errorMessage 'description'}}</span>
       </div>
     </div>
 
 
     
-    <div class="form-group {{errorClass 'url'}}">
-      <label class="control-label" for="url">URL (optional)</label>
+    <div class="form-group {{errorClass 'userUrl'}}">
+      <label class="control-label" for="userUrl">URL (optional)</label>
       <div class="controls">
-          <input name="url" id="url" type="text" value="{{url}}" placeholder="Your URL" class="form-control"/>
-          <span class="help-block">{{errorMessage 'url'}}</span>
+          <input name="userUrl" id="userUrl" type="text" value="{{userUrl}}" placeholder="Your URL" class="form-control"/>
+          <span class="help-block">{{errorMessage 'userUrl'}}</span>
       </div>
     </div>
     
