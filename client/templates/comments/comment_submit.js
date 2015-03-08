@@ -17,7 +17,8 @@ Template.commentSubmit.events({
     
     var $body = $(e.target).find('[name=body]');
     var comment = {
-      body: $body.val(),
+      //body: $body.val(),
+      body: $('#body').code(),
       postId: template.data._id
     };
     
@@ -36,3 +37,12 @@ Template.commentSubmit.events({
     });
   }
 });
+
+//1: Summernote
+Template.commentSubmit.rendered = function() {
+  $('#body').summernote({
+  //airMode: true,
+    height: 300,   //set editable area's height
+});
+};
+//1: /Summernote

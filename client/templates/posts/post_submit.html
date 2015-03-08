@@ -1,4 +1,5 @@
 <template name="postSubmit">
+  
   <form class="main form">
     <div class="form-group {{errorClass 'title'}}">
       <label class="control-label" for="title">Title<sup>*</sup></label>
@@ -28,12 +29,15 @@
             <option value="GoDaddy">GoDaddy</option>      
             <option value="JMP">JMP</option>    
             <option value="MadMimi">MadMimi</option>
+            <option value="miscellaneous">miscellaneous</option>
             <option value="Varian">Varian</option>
             <option value="Zimbra">Zimbra</option>
           </select>
           <span class="help-block">{{errorMessage 'category'}}</span>
         </div>
       </div>
+    
+    
 <!--
 <button class="btn btn-warning rm-mustard">Remove Mustard</button>
 <button class="btn btn-danger rm-ketchup">Remove Ketchup</button>
@@ -54,6 +58,17 @@
           <span class="help-block">{{errorMessage 'description'}}</span>
       </div>
     </div>
+
+    <!--div class="form-group {{errorClass 'attachment'}}">
+      <label class="control-label" for="attachment">Attachment<sup>*</sup></label>
+      <div class="controls">
+          <!-\- input name="description" id="description" type="textarea" value="" placeholder="Insert your message or question" class="form-control"/ -\->
+          <div id="attachment" name="attachment" value="" class="form-control" placeholder="Insert your attachment" rows="4"></div>
+          <span class="help-block">{{errorMessage 'attachment'}}</span>
+      </div>
+    </div-->
+    
+    
     
 <!-- //1:  natestrauser:x-editable-bootstrap - not rich text->
   <p id="textArea" class="editable" data-type="textarea" data-placeholder="Enter text" data-emptytext="Click to enter text" data-rows="4">{{textAreaContent}}</p>

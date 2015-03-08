@@ -21,7 +21,8 @@ Template.postEdit.events({
       userUrl: $(e.target).find('[name=userUrl]').val(),
       title: $(e.target).find('[name=title]').val(),
       category: $(e.target).find('[name=category]').val(),
-      description: $(e.target).find('[name=description]').val(),      
+      //description: $(e.target).find('[name=description]').val(),  
+      description: $('#description').code(),
     }
     
     var errors = validatePost(postProperties);
@@ -49,3 +50,12 @@ Template.postEdit.events({
     }
   }
 });
+
+//1: Summernote
+Template.postEdit.rendered = function() {
+  $('#description').summernote({
+    height: 300,   //set editable area's height
+  });
+  //$('#description').code(sHTML);
+};
+//1: /Summernote

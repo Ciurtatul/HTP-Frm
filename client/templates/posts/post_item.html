@@ -5,7 +5,8 @@
     <div class="post-content">
       <h3><a href="{{postUrl}}">{{title}}</a>
       <p><span>Project/category: {{#if category}}{{category}}{{else}}none{{/if}}</span></p>
-      <p><span>{{description}}</span></p>
+      <!--1:<p><span>{{description}}</span></p>-->
+      <p id="description" style="max-width: 1100px">{{{description}}}</p>
       {{#if userUrl}}
         <p><span>URL: <a href="{{userUrl}}">{{userUrl}}</a></span></p>
       {{/if}}

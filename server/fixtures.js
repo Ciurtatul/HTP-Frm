@@ -37,7 +37,7 @@ if (Posts.find().count() === 0) {
   
   var intrHTPForumId = Posts.insert({
     title: 'Introducing HTP Forum',
-    category: '',
+    category: 'miscellaneous',
     description: 'What is this?',
     userId: janeDoe._id,
     author: janeDoe.profile.name,
@@ -117,11 +117,26 @@ if (Posts.find().count() === 0) {
   
   setFixtureUrlShortUrl(jmpUiStringsId);
   
+  var aNossaCopaId = Posts.insert({
+    title: 'ESSA É A NOSSA COPA!',
+    category: 'miscellaneous',
+    description: '<p>Angela Merkel\'s reaction after Germany\'s ecstatic win.<br></p><p><br></p><img  src="/images/ESSA.E.A.NOSSA.COPA.jpg" data-filename="ESSA.E.A.NOSSA.COPA.jpg"><p><br></p>',
+    userId: johnDoe._id,
+    author: johnDoe.profile.name,
+    //userUrl: '',
+    submitted: new Date(now - 13 * 3600 * 1000),
+    commentsCount: 0,
+    upvoters: [],
+    votes: 0,
+  });
+  
+  setFixtureUrlShortUrl(aNossaCopaId);
+  
   for (var i = 0; i < 10; i++) {
     //var shortURL = Bitly.shortenURL('http://google.com/?q=test-' + i);
     var postId = Posts.insert({      
       title: 'Test post #' + i,
-      category: '',
+      category: 'miscellaneous',
       description: 'Test question #' + i,
       author: johnDoe.profile.name,
       userId: johnDoe._id,

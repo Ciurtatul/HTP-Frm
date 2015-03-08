@@ -18,8 +18,9 @@
           <option value="GoDaddy">GoDaddy</option>      
           <option value="JMP">JMP</option>    
           <option value="MadMimi">MadMimi</option>
+          <option value="miscellaneous">miscellaneous</option>
           <option value="Varian">Varian</option>
-          <option value="Zimbra">Zimbra</option>
+          <option value="Zimbra">Zimbra</option>          
         </select>
         <span class="help-block">{{errorMessage 'category'}}</span>
       </div>
@@ -31,7 +32,8 @@
       <label class="control-label" for="description">Body</label>
       <div class="controls">
           <!-- input name="description" id="description" type="text" value="{{description}}" placeholder="Insert your message or question" class="form-control"/ -->
-          <textarea name="description" id="description" value="{{description}}" class="form-control" placeholder="Insert your message or question" rows="4"></textarea>
+          <!-- textarea name="description" id="description" value="{{description}}" class="form-control" placeholder="Insert your message or question" rows="4"></textarea -->
+          <div textarea name="description" id="description">{{{description}}}</div>
           <span class="help-block">{{errorMessage 'description'}}</span>
       </div>
     </div>

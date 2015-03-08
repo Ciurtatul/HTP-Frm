@@ -27,7 +27,10 @@ Template.postSubmit.events({
       userUrl: $(e.target).find('[name=userUrl]').val(),
       title: $(e.target).find('[name=title]').val(),
       category: $(e.target).find('[name=category]').val(),
-      description: $(e.target).find('[name=description]').val(),
+      //description: $(e.target).find('[name=description]').val(),
+      description: $('#description').code(), /*//1:*/
+      //content: function(content){$('[name=content]').html($('#summernote').code());}
+
     };
     
     var errors = validatePost(post);
@@ -65,3 +68,27 @@ Template.postSubmit.helpers({
   return !!Session.get('postSubmitErrors')[field] ? 'has-error': '';
   }
 });
+
+
+//1: Summernote
+Template.postSubmit.rendered = function() {
+  $('#description').summernote({
+  //airMode: true,
+    height: 300,   //set editable area's height
+    /*onImageUpload: function(files, editor, welEditable) {
+      console.log('image upload:', files, editor, welEditable);
+    }*/
+    /*toolbar: [
+      //['style', ['style']], // no style button
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['fontsize', ['fontsize']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['height', ['height']],
+      //['insert', ['picture', 'link']], // no insert buttons
+      //['table', ['table']], // no table button
+      //['help', ['help']] //no help button
+    ]*/
+});
+};
+//1: /Summernote
