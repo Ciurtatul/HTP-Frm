@@ -22,3 +22,15 @@ Meteor.publish('comments', function(postId) {
 Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId, read: false});
 });
+
+//1:
+Meteor.publish('singleUserEmail', function(id) {
+  check(id, String);
+  return Meteor.users.find({_id: id}, {
+    fields : {
+      'emails': 1,
+    }
+  });
+}); 
+
+//1:*/

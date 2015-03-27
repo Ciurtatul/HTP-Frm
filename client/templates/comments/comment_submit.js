@@ -30,7 +30,7 @@ Template.commentSubmit.events({
     
     Meteor.call('commentInsert', comment, function(error, commentId) {
       if (error){
-        throwError(error.reason);
+        Errors.throw(error.reason);
       } else {
         $body.val('');
       }
