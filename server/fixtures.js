@@ -19,9 +19,26 @@
     */
   }
 //1: /Improve
+
+//1: Initialize real users
+if (! Meteor.users.findOne({"username" : "superUser"})) {
+  console.log("Initializing accounts ...");
+  if(!Meteor.settings.users || !Meteor.settings.projects)
+    throw new Meteor.Error(500, 'Please provide "users" and/or "projects" array in Meteor.settings');
+  Meteor.settings.users.forEach(function (user) {
+    var userId = Meteor.users.insert({
+      username: user.username,
+      emails: user.emails,
+      projects: (user.username === 'superUser') ? Meteor.settings.projects : user.projects, //1: superUser should see all posts from all projects
+      profile: user.profile
+    });
+    Accounts.setPassword(userId, user.password);
+  });
+}
+//1:/
   
 
-
+//1: Initialize some posts
 if (Posts.find().count() === 0) {
   var now = new Date().getTime();
   
@@ -132,7 +149,7 @@ if (Posts.find().count() === 0) {
   
   setFixtureUrlShortUrl(aNossaCopaId);
   
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 4; i++) {
     //var shortURL = Bitly.shortenURL('http://google.com/?q=test-' + i);
     var postId = Posts.insert({      
       title: 'Test post #' + i,
@@ -149,3 +166,4 @@ if (Posts.find().count() === 0) {
     setFixtureUrlShortUrl(postId);
   }
 }
+//1:/

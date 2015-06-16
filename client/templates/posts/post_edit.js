@@ -4,10 +4,16 @@ Template.postEdit.created = function() {
 Template.postEdit.helpers({
   errorMessage: function(field) {
     return Session.get('postEditErrors')[field];
-},
+  },
   errorClass: function (field) {
     return !!Session.get('postEditErrors')[field] ? 'has-error' : '';
-}
+  },
+  isEqual: function(string) {
+      if( string === Posts.findOne().category ) { //1: Get the current post and read the category, because current post is not visible inside {{#each}}.
+        return true;
+      }
+      return false;
+  }
 });
 
 

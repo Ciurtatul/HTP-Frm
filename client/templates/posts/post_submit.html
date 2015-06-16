@@ -25,13 +25,19 @@
         <label class="control-label" for="category">Project/Category<sup>*</sup></label>
         <div class="controls">
           <select class="form-control" name="category" id="category">
-            <option value="" selected disabled>Please select an option...</option>
-            <option value="GoDaddy">GoDaddy</option>      
-            <option value="JMP">JMP</option>    
-            <option value="MadMimi">MadMimi</option>
-            <option value="miscellaneous">miscellaneous</option>
-            <option value="Varian">Varian</option>
-            <option value="Zimbra">Zimbra</option>
+              <option value="" selected disabled>Please select an option...</option>
+              {{#each loggedInUserProjects}}
+                  <option value="{{this}}">{{this}}</option>
+              {{/each}}
+              <!-- option value="Dolby">Dolby</option>
+              <option value="Flexera">Flexera</option>
+              <option value="GoDaddy">GoDaddy</option>
+              <option value="JMP">JMP</option>
+              <option value="Mad Mimi">Mad Mimi</option>
+              <option value="miscellaneous">miscellaneous</option>
+              <option value="Mozilla">Mozilla</option>
+              <option value="Varian">Varian</option>
+              <option value="Zimbra">Zimbra</option -->
           </select>
           <span class="help-block">{{errorMessage 'category'}}</span>
         </div>
