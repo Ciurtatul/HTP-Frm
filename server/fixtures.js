@@ -4,7 +4,7 @@
   
 //1: Improve
   var setFixtureUrlShortUrl = function(postId) {
-    var shortURL = Bitly.shortenURL('https://htpforum.htpassport.net/posts/'+postId);
+    var shortURL = Bitly.shortenURL('https://htpforum.htpassport.com/posts/'+postId);
     Posts.update(postId, {$set: {url: '/posts/'+postId, shortUrl: shortURL}}, function(error) {
         if (error)
           throw new Meteor.Error(500, error.reason);
