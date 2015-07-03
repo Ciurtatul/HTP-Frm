@@ -4,9 +4,15 @@
     <!-- a href="#" class="upvote btn btn-default {{upvotedClass}}"><i class="entypo entypo-thumbs-up"></i></a -->
     <div class="post-content">
       <h3><a href="{{postUrl}}">{{title}}</a>
-      <p><span>Project/category: {{#if category}}{{category}}{{else}}none{{/if}}</span></p>
+      <p>{{#if humanId}}<span>ID: {{humanId}}, </span>{{/if}}<span>Project/Category: {{#if category}}{{category}}{{else}}none{{/if}}</span></p>
       <!--1:<p><span>{{description}}</span></p>-->
       <p id="description" style="max-width: 1100px">{{{description}}}</p>
+        {{#if sourceString}}
+            <p><span>Source string: {{sourceString}}</span></p>
+        {{/if}}
+        {{#if targetString}}
+            <p><span>Target string: {{targetString}}</span></p>
+        {{/if}}
       {{#if userUrl}}
         <p><span>URL: <a href="{{userUrl}}">{{userUrl}}</a></span></p>
       {{/if}}

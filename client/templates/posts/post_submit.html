@@ -25,7 +25,7 @@
         <label class="control-label" for="category">Project/Category<sup>*</sup></label>
         <div class="controls">
           <select class="form-control" name="category" id="category">
-              <option value="" selected disabled>Please select an option...</option>
+              <option value="" selected disabled>Please select a project...</option>
               {{#each loggedInUserProjects}}
                   <option value="{{this}}">{{this}}</option>
               {{/each}}
@@ -42,6 +42,19 @@
           <span class="help-block">{{errorMessage 'category'}}</span>
         </div>
       </div>
+
+      <div class="form-group {{errorClass 'assigneeId'}}">
+          <label class="control-label" for="assigneeId">Assign to:<sup>*</sup></label>
+          <div class="controls">
+              <select class="form-control" name="assigneeId" id="assigneeId">
+                  <option value="" selected disabled>Please select an assignee...</option>
+                  {{#each projectAssignees}}
+                      <option value="{{this.id}}">{{this.name}}</option>
+                  {{/each}}
+              </select>
+              <span class="help-block">{{errorMessage 'assigneeId'}}</span>
+          </div>
+      </div>
     
     
 <!--
@@ -54,6 +67,20 @@
     $('.remove-example').selectpicker('refresh');
   });
 -->
+      <div class="form-group {{errorClass 'sourceString'}}">
+          <label class="control-label" for="sourceString">Source String (optional)</label>
+          <div class="controls">
+              <input name="sourceString" id="sourceString" type="text" value="" placeholder="Enter source string" class="form-control"/>
+              <span class="help-block">{{errorMessage 'sourceString'}}</span>
+          </div>
+      </div>
+      <div class="form-group {{errorClass 'targetString'}}">
+          <label class="control-label" for="targetString">Target String (optional)</label>
+          <div class="controls">
+              <input name="targetString" id="targetString" type="text" value="" placeholder="Enter target string" class="form-control"/>
+              <span class="help-block">{{errorMessage 'targetString'}}</span>
+          </div>
+      </div>
     
 <!-- //1: -->
     <div class="form-group {{errorClass 'description'}}">

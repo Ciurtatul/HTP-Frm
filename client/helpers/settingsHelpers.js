@@ -1,6 +1,3 @@
-/**
- * Created by ciurtatul on 6/14/15.
- */
 
 //1: Defines a helper function which can be used from all templates.
 Template.registerHelper('loggedInUserProjects', function() {
@@ -26,7 +23,17 @@ Template.registerHelper('loggedInUserProjects', function() {
     }
 });
 
-/*1: Update: It's been moved to "client/posts/post_edit.js" template handlers, and it's working now.
+/*1: Moved to "client/template/posts/post_submit.js" inside a local helper
+Template.registerHelper('projectAssignees', function(project) {
+    Meteor.call('getProjectAssignees', project, function(error, result) {
+        if (error)
+            return Errors.throw(error.reason);
+        return result;
+    });
+});
+/*
+
+/*1: Update: It's been moved to "client/templates/posts/post_edit.js" template handlers, and it's working now.
 To be used in an #if #unless spacebars statement in "client/posts/post_edit.html" in order to prevent displaying selected option in "Projects: " more than once.
 // So far it doesn't see the current post or template, because this refers to the current item of the innermost loop (i.e. project).
 Template.registerHelper('isEqual', function(string) {

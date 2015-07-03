@@ -1,6 +1,7 @@
 // Fixture data 
 
 
+
   
 //1: Improve
   var setFixtureUrlShortUrl = function(postId) {
@@ -29,7 +30,7 @@ if (! Meteor.users.findOne({"username" : "superUser"})) {
     var userId = Meteor.users.insert({
       username: user.username,
       emails: user.emails,
-      projects: (user.username === 'superUser') ? Meteor.settings.projects : user.projects, //1: superUser should see all posts from all projects
+      projects: (user.username === 'superUser') ? projectsNames : user.projects, //1: superUser should see all posts from all projects
       profile: user.profile
     });
     Accounts.setPassword(userId, user.password);

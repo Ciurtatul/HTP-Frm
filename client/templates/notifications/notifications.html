@@ -20,7 +20,11 @@
 <template name="notificationItem">
   <li>
     <a href="{{notificationPostPath}}">
-      <strong>{{commenterName}}</strong> commented on your post
+        {{#if assigner}}
+            <strong>{{assigner}}</strong> assigned a post to you
+        {{else}}
+            <strong>{{commenterName}}</strong> commented on your post
+        {{/if}}
     </a>
   </li>
 </template>
