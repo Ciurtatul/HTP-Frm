@@ -3,8 +3,16 @@
 
 Template.postEdit.created = function() {
   Session.set('postEditErrors', {});
+
+  //1: I have to do this right when the template is created, because if I do it in the template helper it's too late, and it is not sent to the client in time.
+  Meteor.call('getPostStatuses', function(error, result) {
+    if (error)
+      return Errors.throw(error.reason);
+    Session.set('postStatuses', result);
+  });
+
   var post = Posts.findOne();
-  console.log("Created, This.assignee ID: " + post.assigneeId);
+  //console.log("Template created, post.assigneeId: " + post.assigneeId);
   Meteor.call('getProjectAssignees', post.category, function(error, result) { // or $( "#category option:selected" ).val()
     if (error)
       return Errors.throw(error.reason);
@@ -25,6 +33,9 @@ Template.postEdit.helpers({
         return true;
       }
       else if ( fieldType === "category" && valueToCompare === post.category ) {
+        return true;
+      }
+      else if ( fieldType === "postStatus" && valueToCompare === post.status ) {
         return true;
       }
       else {
@@ -60,7 +71,10 @@ Template.postEdit.helpers({
     else {
       return [];
     }
-  }
+  },
+  postStatuses: function() {
+    return Session.get('postStatuses');
+  },
 });
 
 
@@ -86,6 +100,7 @@ Template.postEdit.events({
       category: $(e.target).find('[name=category]').val(),
       assigneeId: $(e.target).find('[name=assigneeId]').val(),
       assigneeName: $(e.target).find('[name=assigneeId]').find('option:selected').text(),
+      status: $(e.target).find('[name=postStatus]').val(),
       sourceString: $(e.target).find('[name=sourceString]').val(),
       targetString: $(e.target).find('[name=targetString]').val(),
       //description: $(e.target).find('[name=description]').val(),
@@ -123,6 +138,7 @@ Template.postEdit.events({
           if (!!post.assigneeId) {
 
             Session.set('sessionProjectAssignees', undefined);
+            Session.set('postStatuses', undefined);
 
             var assigner = Meteor.user();
 

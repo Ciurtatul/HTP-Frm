@@ -58,8 +58,6 @@ Meteor.publish('singleUserEmail', function(id) {
   return Meteor.users.find({_id: id}, {
     fields : {
       'emails': 1,
-      'username': 1,
-      'profile': 1,
     }
   });
 }); 

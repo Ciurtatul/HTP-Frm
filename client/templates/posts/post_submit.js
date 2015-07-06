@@ -36,6 +36,7 @@ Template.postSubmit.events({
       category: $(e.target).find('[name=category]').val(),
       assigneeId: $(e.target).find('[name=assigneeId]').val(),
       assigneeName: $(e.target).find('[name=assigneeId]').find('option:selected').text(),
+      status: 'NEW',
       sourceString: $(e.target).find('[name=sourceString]').val(),
       targetString: $(e.target).find('[name=targetString]').val(),
       //description: $(e.target).find('[name=description]').val(),

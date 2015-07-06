@@ -5,7 +5,8 @@ projectsNames = function() {
     return Meteor.settings.projects.map(function(element) {
         return element.name;
     });
-}
+};
+
 
 projectAssignees = function (projectName) {
     if(!Meteor.settings.projects)
@@ -16,7 +17,7 @@ projectAssignees = function (projectName) {
     return projectAssigneesUsernames.map(function(username) {
         return Meteor.users.findOne({username: username}, {fields: {'username': 1, 'profile.name': 1}});
     });
-}
+};
 
 //1: So that it can be called on the client
 // Meteor methods (http://stackoverflow.com/questions/17460123/meteor-methods-returns-undefined)
@@ -27,6 +28,11 @@ Meteor.methods({
     getProjectAssignees: function (projectName) {
         check(projectName, String);
         return projectAssignees(projectName);
+    },
+    getPostStatuses: function () {
+        if(!Meteor.settings.postStatuses)
+            throw new Meteor.Error(500, 'Please provide "postStatuses" array in Meteor.settings');
+        return Meteor.settings.postStatuses;
     }
 });
 //1/
