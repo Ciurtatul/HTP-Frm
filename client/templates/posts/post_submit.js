@@ -35,6 +35,7 @@ Template.postSubmit.events({
       title: $(e.target).find('[name=title]').val(),
       category: $(e.target).find('[name=category]').val(),
       assigneeId: $(e.target).find('[name=assigneeId]').val(),
+      assigneeName: $(e.target).find('[name=assigneeId]').find('option:selected').text(),
       sourceString: $(e.target).find('[name=sourceString]').val(),
       targetString: $(e.target).find('[name=targetString]').val(),
       //description: $(e.target).find('[name=description]').val(),
@@ -75,6 +76,8 @@ Template.postSubmit.events({
 
         if (!!post.assigneeId) {
 
+          Session.set('sessionProjectAssignees', undefined);
+
           var assigner = Meteor.user();
 
           //1: Send notification to post assignee
@@ -92,7 +95,7 @@ Template.postSubmit.events({
             var assignee = Meteor.users.findOne(post.assigneeId); //1: You have to do this here and not earlier, because otherwise you'll not get ".emails" field for assignee.
             //console.log("Post shortURL: " + result.shortUrl);
             //console.log("Inserted post ID: " + result._id + ", title: " + post.title + ", assignee: " + post.assignee);
-            Session.set('sessionProjectAssignees', undefined);
+
             Meteor.call('sendEmail',
                 assignee.emails.map(function(obj){return obj.address;}),
                 "HTP Forum post '" + post.title + "' has just been assigned to you",
